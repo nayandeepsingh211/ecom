@@ -94,8 +94,10 @@ class CartController extends Controller
             //echo $finalPrice;die;
             DB::table('orders')->where(['id'=>$lastInsertId])->update(['total_price'=>$finalPrice],);
             session()->forget('cart'); 
+            return redirect('/dashboard')->with('message', 'Order Successfully!');;
         }
+        return redirect('/dashboard')->with('message', 'Cart is empty!');;
         
-        return redirect('/dashboard')->with('message', 'Order Successfully!');;
+        
     }
 }
